@@ -1,18 +1,41 @@
-<html>
-    <head>
-        <title>Django Girls blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
+{% block content %}
 
-        {% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaksbr }}</p>
+                  {% for post in posts %}
+                <div class="col-lg-3 col-md-4 col-12 my-1">
+                    <!-- Single News -->
+                    <div class="single-news wow fadeInUp card card-cover my-auto border-0" style="border-radius:2em" data-wow-delay=".2s">
+                        <div class="image" style="height: 210px;">
+                            <img class="thumb" src="images/blog/blog-label-8.jpg" alt="#">
+                            <div class="meta-details">
+                                &nbsp;<i class="bi bi-calendar-date text-white fa-lg"></i> <span>{{ post.published_date }}</span>
+                            </div>
+                        </div>
+                        <div class="content-body">
+                            <h4 class="title"><a class="stretched-link nav-link mt-auto" data-bs-toggle="modal" data-bs-target="#blog-modal{{ post.id }}">{{ post.title }}</a></h4>
+                        </div>
+                    </div>
+                    <!-- End Single News -->
+
+<div class="modal fade" id="blog-modal{{ post.id }}" tabindex="-1" aria-labelledby="blog-modal{{ post.id }}Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg modal-fullscreen-sm-down show">
+    <div class="modal-content bordered border-primary border-1">
+      <div class="modal-header" style="border: 0;">
+          <a class="nav-link linkkk bi bi-link-45deg modal-title text-secondary" style="font-size:21px; margin-left: -15px" data-clipboard-text="https://want2it.online/blog.html?postid={{ post.id }}"></a><b class="modal-title text-primary h5 lang-  text-truncate" data-label="" style="font-size:21px; margin-left: -15px" id="blog-modal{{ post.id }}Label">{{ post.title }}</b>
+        <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+
+        	<img class="mx-3 mb-3 img-fluid rounded mx-auto d-block img-thumbnail shadow" style="margin-top: -8px; max-width:96%; max-height: 320px;" src="assets/images/blog/blog-label-4-1.jpg">
+		 {{ post.text|linebreaksbr }}
+      </div>
+      <div class="modal-footer d-flex justify-content-end border-primary">
+          <div data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="left" title="Полезные книги на все времена"><button type="button" style="border-radius: 24px 24px 24px 24px" class="btn btn-outline-primary lang-" data-bs-toggle="modal" data-bs-target="#blog-modal1" data-label="">Следующий</button></div>
+      </div>
     </div>
-{% endfor %}
-    </body>
-</html>
+  </div>
+</div>
+                </div>
+                            {% endfor %}
+
+{% endblock %}
