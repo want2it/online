@@ -355,7 +355,9 @@
                     <!-- Single News -->
                     <div class="single-news wow fadeInUp card card-cover my-auto border-0" style="border-radius:2em" data-wow-delay=".2s">
                         <div class="image" style="height: 210px;">
-                            <img class="thumb" src="images/blog/blog-label-8.jpg" alt="#">
+                                    {% if post.post_image %}
+                                 <img class="thumb" src="{{ post.post_image }}">
+                                      {% endif %}
                             <div class="meta-details">
                                 &nbsp;<i class="bi bi-calendar-date text-white fa-lg"></i> <span>{{ post.published_date }}</span>
                             </div>
@@ -374,8 +376,9 @@
         <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">
-
-        	<img class="mx-3 mb-3 img-fluid rounded mx-auto d-block img-thumbnail shadow" style="margin-top: -8px; max-width:96%; max-height: 320px;" src="assets/images/blog/blog-label-4-1.jpg">
+                                                {% if post.post_image %}
+                                 <img class="mx-3 mb-3 img-fluid rounded mx-auto d-block img-thumbnail shadow" src="{{ post.post_image }}">
+                                      {% endif %}
 		 {{ post.text|linebreaksbr }}
       </div>
       <div class="modal-footer d-flex justify-content-end border-primary">
