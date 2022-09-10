@@ -1,0 +1,11 @@
+class ContactForm(forms.Form):
+    soname = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'size':'40','class': 'form-control'}))
+    name = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'size':'40','class': 'form-control'}))
+    telegram = forms.CharField(max_length=24, widget=forms.TextInput(attrs={'size':'40','class': 'form-control'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'size':'40','class': 'form-control'}))
+    partner = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    country = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    tarif = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+    copy = forms.BooleanField(required=True)

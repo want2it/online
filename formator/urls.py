@@ -1,0 +1,1 @@
+url(r'^thanks/$', views.thanks, name='thanks'),

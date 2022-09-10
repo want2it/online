@@ -127,3 +127,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Настройки почтового сервера
+EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_HOST_USER = 'want2it@outlook.com'
+EMAIL_HOST_PASSWORD = 'converseTrast&110693'
+EMAIL_PORT = 587
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = 'want2it@outlook.com'
