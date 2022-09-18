@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
     <style>
 
 .custom-tooltip {
@@ -111,7 +112,7 @@
                                         </ul>
                                     </li>
                                     <li class="nav-item"><a href="#">Блог</a>
-                                        <ul class="sub-menu">
+                                        <ul class="sub-menu filter">
                                             <li><a href="{% url 'blog' %}" class=" text-truncate">Все статьи</a></li>
                                             <li><hr class="dropdown-divider"></li>
                                              {% for post in post_list %}
@@ -325,11 +326,95 @@ var sendtelegram = function() {
 
 
 
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+  </symbol>
+</svg>
 
-        {% block content %}
-        <!-- Content Goes here -->
-        {% endblock content %}
+    <div class="latest-news-area section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2 class="wow fadeInUp" data-wow-delay=".3s">Блог</h2>
+                        <p class="wow fadeInUp" data-wow-delay=".7s">Последние новости и посты</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for post in post_list %}
+                <div class="col-lg-3 col-md-4 col-12 my-1">
+                    <!-- Single News -->
+                    <div class="single-news wow fadeInUp card card-cover my-auto border-0" style="border-radius:2em" data-wow-delay=".2s">
+                        <div class="image" style="height: 210px;">
+                            <img class="thumb" src="{{ post.text }}" alt="#">
+                            <div class="meta-details">
+                                &nbsp;<i class="bi bi-calendar-date text-white fa-lg"></i> <span>{{ post.created_on|date:"d b" }}</span>
+                            </div>
+                        </div>
+                        <div class="content-body">
+                            <h4 class="title"><a class="stretched-link nav-link mt-auto" data-bs-toggle="modal" data-bs-target="#blog-modal{{ post.id }}">{{ post.title }}</a></h4>
+                        </div>
+                    </div>
+                    <!-- End Single News -->
+                </div>
+                <div class="modal fade" id="blog-modal{{ post.id }}" tabindex="-1" aria-labelledby="blog-modal{{ post.id }}Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg modal-fullscreen-sm-down">
+    <div class="modal-content bordered border-primary border-1">
+      <div class="modal-header" style="border: 0;">
+          <a class="nav-link linkkk modal-title text-secondary modal-link" style="font-size:21px; margin-left: -15px" data-clipboard-text="https://want2it.online/blog?postid={{ post.id }}"><button class="btn btn-outline-info btn-sm" style="height: 30px; width: 30px; align-content: center; border-radius: 0.7em"><i class="bi bi-link-45deg" style="font-size:18px; margin-left: -3px"></i></button>&nbsp;&nbsp;&nbsp;&nbsp; <b class="modal-title text-primary h5 lang-  text-truncate" data-label="" style="font-size:21px; margin-left: -15px" id="blog-modal{{ post.id }}Label">{{ post.title }}</b></a>
+        <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        {{ post.content|safe }}
 
+      </div>
+      <div class="modal-footer d-flex justify-content-between border-primary">
+          <div><button type="button" style="border-radius: 24px 24px 24px 24px" class="btn btn-outline-primary left-btn left-{{ post.id }}" id="{{ post.id }}" data-bs-toggle="modal" data-bs-target="#blog-modal{{ post.id|add:"1" }}" data-label="">Следующий</button></div>
+          <div><button type="button" style="border-radius: 24px 24px 24px 24px" class="btn btn-outline-secondary" id="" data-bs-toggle="modal" data-bs-target="#blog-modal{{ post.id|add:"-1" }}" data-label="">Предыдущий</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                {% endfor %}
+                                              </div>
+        <script>
+
+const allblogs = {{ post_list|length }};
+document.getElementById(allblogs+1)
+   if( $("#left{{ post.id }}") > show){
+      spans.slice(show).hide();
+   }
+});
+        </script>
+
+
+        {% if is_paginated %}
+    <div class="text-center mt-2">
+      {% if page_obj.has_previous %}
+
+          <a class="btn btn-outline-primary mb-4 mr-1" style="border-radius: 50%; height: 38px; width: 38px; " href="?page=1"><i class="bi bi-chevron-double-left"></i></a>
+        <a class="btn btn-outline-primary mb-4 mr-1" style="border-radius: 50%; height: 38px; width: 38px; " href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-chevron-compact-left"></i></a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-primary mb-4 mr-1" style="border-radius: 50%; height: 38px; width: 38px; " href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-primary mb-4 mr-1" style="border-radius: 50%; height: 38px; width: 38px; " href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-primary mb-4 mr-1" style="border-radius: 50%; height: 38px; width: 38px; " href="?page={{ page_obj.next_page_number }}"><i class="bi bi-chevron-compact-right"></i></a>
+        <a class="btn btn-outline-primary mb-4 mr-1" style="border-radius: 50%; height: 38px; width: 38px; " href="?page={{ page_obj.paginator.num_pages }}"><i class="bi bi-chevron-double-right"></i></a>
+      {% endif %}
+    </div>
+    {% endif %}
+        </div>
+    </div>
 
 
 
@@ -387,10 +472,10 @@ var sendtelegram = function() {
                         <!-- Single Widget -->
                         <div class="single-footer f-link text-truncate">
                             <h3>Блог</h3>
-                            <ul>
-                                <li><a href="{% url 'blog' %}" style="margin-top: -4px">Все статьи</a></li>
+                            <ul class="filter_1">
+                                <li><a href="{% url 'blog' %}" style="margin-top: -4px; margin-bottom: 3px">Все статьи</a></li>
                                         {% for post in post_list %}
-                                <li><a href="{% url 'blog' %}?postid={{ post.id }}" class=" text-truncate" style="margin-top: -3px">{{ post.title }}</a></li>
+                                <li><a href="{% url 'blog' %}?postid={{ post.id }}" class=" text-truncate" style="margin-top: -4px">{{ post.title }}</a></li>
                                         {% endfor %}
                             </ul>
                         </div>
@@ -442,13 +527,17 @@ var sendtelegram = function() {
         <i class="lni lni-chevron-up"></i>
     </a>
 
-    <script>
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-});
-    </script>
-    <!-- ========================= JS here ========================= -->
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+<div class="toast text-white bg-dark" id="liveToastModal" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header bg-warning text-dark">
+    <i class="bi bi-robot rounded me-2"></i>
+    <strong class="me-auto lang-51" data-label="Bot Want 2 IT">Бот Want 2 IT</strong>
+    <small class="text-muted">Скопировано!</small>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+</div>
+</div>
+                                   <!-- ========================= JS here ========================= -->
 
 
 
@@ -472,6 +561,60 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             'autoplayVideos': true,
         });
     </script>
+    <script>
+        $(".filter").each(function(){
+   const show = 5;
+   let spans = $(this).children("li");
+
+   if( spans.length > show){
+      spans.slice(show).hide();
+   }
+});
+    </script>
+    <script>
+        $(".filter_1").each(function(){
+   const show = 4;
+   let spans = $(this).children("li");
+
+   if( spans.length > show){
+      spans.slice(show).hide();
+   }
+});
+    </script>
+ <script>
+            $(window).on('load',function(){
+                var param = window.location.search.replace('?','').split('&').reduce(
+        function(pp,ee){
+            var aa = ee.split('=');
+            pp[ decodeURIComponent(aa[0])] = decodeURIComponent(aa[1]);
+            return pp;
+        },
+        {}
+    );
+                let ad = param['postid'];
+        $('#blog-modal'+ad).modal('show');
+            });
+
+// Clipboard
+var clipboard = new ClipboardJS('.linkkk')
+
+clipboard.on('success', function(e) {
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+    e.clearSelection();
+});
+
+clipboard.on('error', function(e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+});
+    </script>
+    <script>
+
+
+            </script>
+
 </body>
 
 </html>
