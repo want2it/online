@@ -685,7 +685,7 @@ var sendtelegram = function() {
                             </div>
                         </div>
                         <div class="content-body ps-4" style="background-color: transparent!important">
-                            <h4 class="title"><a href="blog.html?postid={{ post.id }}">{{ post.title }}</a></h4>
+                            <h4 class="title"><a href="{% url 'blog' %}?postid={{ post.id }}">{{ post.title }}</a></h4>
                         </div>
                     </div>
                     <!-- End Single News -->
