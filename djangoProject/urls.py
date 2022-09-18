@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+# add a flag for
+# handling the 404 error
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', include('blog.urls')),
 ]
+handler404 = 'blog.views.error_404_view'
