@@ -372,7 +372,7 @@ var sendtelegram = function() {
       </div>
       <div class="modal-footer d-flex justify-content-between border-primary">
           <div><button type="button" style="border-radius: 24px 24px 24px 24px" class="btn btn-outline-primary left-btn left-{{ post.id }}" id="{{ post.id }}" data-bs-toggle="modal" data-bs-target="#blog-modal{{ post.id|add:"1" }}" data-label="">Следующий</button></div>
-          <div><button type="button" style="border-radius: 24px 24px 24px 24px" class="btn btn-outline-secondary" id="" data-bs-toggle="modal" data-bs-target="#blog-modal{{ post.id|add:"-1" }}" data-label="">Предыдущий</button></div>
+          <div><button type="button" style="border-radius: 24px 24px 24px 24px" class="btn btn-outline-secondary" id="{{ post.id|add:"-1" }}" data-bs-toggle="modal" data-bs-target="#blog-modal{{ post.id|add:"-1" }}" data-label="">Предыдущий</button></div>
       </div>
     </div>
   </div>
@@ -383,11 +383,9 @@ var sendtelegram = function() {
         <script>
 
 const allblogs = {{ post_list|length }};
-document.getElementById(allblogs+1)
-   if( $("#left{{ post.id }}") > show){
-      spans.slice(show).hide();
-   }
-});
+const unreale = document.getElementById(allblogs)+1;
+$('#{{ post_list|length }}').hide();
+$('#0').hide();
         </script>
 
 
