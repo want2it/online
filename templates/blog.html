@@ -363,7 +363,7 @@ var sendtelegram = function() {
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg modal-fullscreen-sm-down">
     <div class="modal-content bordered border-primary border-1">
       <div class="modal-header" style="border: 0;">
-          <a class="nav-link linkkk modal-title text-secondary modal-link" style="font-size:21px; margin-left: -15px" data-clipboard-text="https://want2it.online/blog?postid={{ post.id }}"><button class="btn btn-outline-info btn-sm" style="height: 30px; width: 30px; align-content: center; border-radius: 0.7em"><i class="bi bi-link-45deg" style="font-size:18px; margin-left: -3px"></i></button>&nbsp;&nbsp;&nbsp;&nbsp; <b class="modal-title text-primary h5 lang-  text-truncate" data-label="" style="font-size:21px; margin-left: -15px" id="blog-modal{{ post.id }}Label">{{ post.title }}</b></a>
+          <a class="nav-link linkkk modal-title text-secondary modal-link" style="font-size:21px; margin-left: -15px" data-clipboard-text="{% url 'blog' %}?postid={{ post.id }}"><button class="btn btn-outline-info btn-sm" style="height: 30px; width: 30px; align-content: center; border-radius: 0.7em"><i class="bi bi-link-45deg" style="font-size:18px; margin-left: -3px"></i></button>&nbsp;&nbsp;&nbsp;&nbsp; <b class="modal-title text-primary h5 lang-  text-truncate" data-label="" style="font-size:21px; margin-left: -15px" id="blog-modal{{ post.id }}Label">{{ post.title }}</b></a>
         <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">

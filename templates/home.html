@@ -333,7 +333,7 @@ var sendtelegram = function() {
                                     <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn">Оставить заявку</a>
                                 </div>
                                 <div class="button wow fadeInUp" data-wow-delay=".9s">
-                                    <a href="vacancy.html" class="btn">Посмотреть открытые вакансии</a>
+                                    <a href="{% url 'vacancy' %}" class="btn">Посмотреть открытые вакансии</a>
                                 </div>
                             </div>
                         </div>
@@ -370,7 +370,7 @@ var sendtelegram = function() {
                     </div>
                     <div class="col-lg-3 col-md-6 col-12">
                         <div class="single-service wow fadeInUp" data-wow-delay=".4s">
-                            <h3><a href="service-single.html">Скорость</a></h3>
+                            <h3><a href="#">Скорость</a></h3>
                             <div class="icon">
                                 <i class="bi bi-speedometer fa-lg"></i>
                             </div>
@@ -379,7 +379,7 @@ var sendtelegram = function() {
                     </div>
                     <div class="col-lg-3 col-md-6 col-12">
                         <div class="single-service wow fadeInUp" data-wow-delay=".6s">
-                            <h3><a href="service-single.html">Результативность</a></h3>
+                            <h3><a href="#">Результативность</a></h3>
                             <div class="icon">
                                 <i class="bi bi-briefcase-fill fa-lg"></i>
                             </div>
@@ -388,7 +388,7 @@ var sendtelegram = function() {
                     </div>
                     <div class="col-lg-3 col-md-6 col-12">
                         <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                            <h3><a href="service-single.html">Гибкий подход</a></h3>
+                            <h3><a href="#">Гибкий подход</a></h3>
                             <div class="icon">
                                 <i class="bi bi-bug-fill fa-lg"></i>
                             </div>
@@ -535,9 +535,9 @@ var sendtelegram = function() {
                     <div class="single-table wow fadeInUp" data-wow-delay=".2s" style="border-radius: 2em">
                         <!-- Table Head -->
                         <div class="table-head">
-                            <h4 class="title ms-3" >Месячный &nbsp;<sup><a href="price.html#price" class="text-info"><i class="bi bi-box-arrow-up-right"></i></a></sup></h4>
+                            <h4 class="title ms-3" >Месячный &nbsp;<sup><a href="{% url 'price' %}" class="text-info"><i class="bi bi-box-arrow-up-right"></i></a></sup></h4>
                             <div class="price">
-                                <p class="amount">$3500<span class="duration"> / месяц</span></p>
+                                <p class="amount">$2500<span class="duration"> / месяц</span></p>
                             </div>
                         </div>
                         <!-- End Table Head -->
@@ -565,7 +565,7 @@ var sendtelegram = function() {
                     <div class="single-table wow fadeInUp" data-wow-delay=".4s" style="border-radius: 2em">
                         <!-- Table Head -->
                         <div class="table-head">
-                            <h4 class="title ms-3" >Стандартный &nbsp;<sup><a href="price.html#price" class="text-info"><i class="bi bi-box-arrow-up-right"></i></a></sup></h4>
+                            <h4 class="title ms-3" >Стандартный &nbsp;<sup><a href="{% url 'price' %}#price" class="text-info"><i class="bi bi-box-arrow-up-right"></i></a></sup></h4>
                             <div class="price">
                                 <p class="amount">от $720<span class="duration"> / вакансию</span></p>
                             </div>
@@ -596,7 +596,7 @@ var sendtelegram = function() {
                     <div class="single-table wow fadeInUp" data-wow-delay=".6s" style="border-radius: 2em">
                         <!-- Table Head -->
                         <div class="table-head">
-                            <h4 class="title ms-3" >Индивидуальный &nbsp;<sup><a href="price.html#price" class="text-info"><i class="bi bi-box-arrow-up-right"></i></a></sup></h4>
+                            <h4 class="title ms-3" >Индивидуальный &nbsp;<sup><a href="{% url 'price' %}#price" class="text-info"><i class="bi bi-box-arrow-up-right"></i></a></sup></h4>
                             <div class="price">
                                 <p class="amount">от $650<span class="duration"> / вакансию</span></p>
                             </div>
@@ -653,7 +653,7 @@ var sendtelegram = function() {
                         <p class="text-white wow fadeInUp" data-wow-delay=".6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">Мы обучаем начинающих специалистов на практике, даем им реальные задачи и помогаем развиваться в начале карьерного пути.</p>
 
                         <div class="button">
-                            <a href="join.html" rel="nofollow" class="btn wow fadeInUp" data-wow-delay=".8s">Присоединиться к нам</a>
+                            <a href="{% url 'join' %}" rel="nofollow" class="btn wow fadeInUp" data-wow-delay=".8s">Присоединиться к нам</a>
                         </div>
                     </div>
                 </div>
@@ -677,7 +677,7 @@ var sendtelegram = function() {
                     {% for post in post_list %}
                 <div class="col-lg-4 col-md-6 col-12">
                     <!-- Single News -->
-                    <div class="single-news wow fadeInUp" style="border: solid 1px; border-radius: 2em;" data-wow-delay=".2s">
+                    <div class="single-news wow card card-cover fadeInUp" style="border: solid 1px; border-radius: 2em;" data-wow-delay=".2s">
                         <div class="image" style="height: 320px; border-radius: 2em 2em 0 2em;">
                             <img class="thumb"  src="{{ post.text }}" height="380px" alt="#">
                             <div class="meta-details" style="margin-bottom: -20px; margin-right:-30px">
@@ -685,7 +685,7 @@ var sendtelegram = function() {
                             </div>
                         </div>
                         <div class="content-body ps-4" style="background-color: transparent!important">
-                            <h4 class="title"><a href="{% url 'blog' %}?postid={{ post.id }}">{{ post.title }}</a></h4>
+                            <h4 class="title"><a href="{% url 'blog' %}?postid={{ post.id }}" class="stretched-link ">{{ post.title }}</a></h4>
                         </div>
                     </div>
                     <!-- End Single News -->
@@ -744,9 +744,6 @@ var sendtelegram = function() {
                                     <img  src="{% static "images/clients/yoursoft-logo.svg" %}" height="66px" width="124px" alt="Brand Logo Images">
                                 </a></li>
                             <li><a href="#">
-                                    <img  src="{% static "images/clients/deriv-logo.svg" %}" height="66px" width="124px" alt="Brand Logo Images">
-                                </a></li>
-                            <li><a href="#">
                                     <img  src="{% static "images/clients/stormnet-logo.webp" %}" height="66px" width="124px" alt="Brand Logo Images">
                                 </a></li>
                         </ul>
@@ -770,7 +767,7 @@ var sendtelegram = function() {
                                 <li><a href="{% url 'price' %}">Цены</a></li>
                                 <li><a href="{% url 'about' %}">Почему мы</a></li>
                                 <li><a href="{% url 'docs' %}">Документы</a></li>
-                                <li><a href="#">Доступы</a></li>
+                                <li><a href="#">Доступы</a></li> <!-- access -->
                             </ul>
                         </div>
                         <!-- End Single Widget -->
@@ -783,7 +780,7 @@ var sendtelegram = function() {
                                 <li><a href="{% url 'vacancy' %}">Вакансии</a></li>
                                 <li><a href="{% url 'upload' %}">Загрузить резюме</a></li>
                                 <li><a href="{% url 'invite' %}">Рекомендовать</a></li>
-                                <li><a href="#">Оставить отзыв</a></li>
+                                <li><a href="#">Оставить отзыв</a></li>  <!--  feedback -->
                             </ul>
                         </div>
                         <!-- End Single Widget -->
@@ -796,7 +793,7 @@ var sendtelegram = function() {
                                 <li><a href="{% url 'about' %}">О компании</a></li>
                                 <li><a href="{% url 'about' %}#contacts">Контакты</a></li>
                                 <li><a href="{% url 'join' %}">Работа у нас</a></li>
-                                <li><a href="#">Спец-предлолжения</a></li>
+                                <li><a href="#">Спец-предлолжения</a></li>   <!--   promo  -->
                             </ul>
                         </div>
                         <!-- End Single Widget -->
@@ -838,13 +835,11 @@ var sendtelegram = function() {
         <div class="footer-bottom">
             <div class="d-flex flex-column flex-md-row justify-content-between mx-auto py-2 mt-2 border-top border-secondary">
 <ul class="d-flex justify-content-center order-md-last social-icons my-auto mx-5" style="margin-top: -12px">
-              <li  data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter"><a class="twitter" href="https://twitter.com/want2it"><i class="fa fa-twitter fa-lg"></i></a></li>
-            <!--  <li title="Facebook"><a class="facebook" href="#"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li> -->
-            <!--  <li title="Vkontakte"><a class="vkontakte" href="#"><i class="fa fa-vk fa-lg" aria-hidden="true"></i></a></li> -->
-              <li  data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram"><a class="telegram" href="https://t.me/want2it"><i class="fa fa-telegram fa-lg"></i></a></li>
-              <li  data-bs-toggle="tooltip" data-bs-placement="top" title="Linkedin"><a class="linkedin" href="https://linkedin.com/company/want2it/"><i class="fa fa-linkedin fa-lg"></i></a></li>
-              <li  data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook"><a class="facebook" href="https://facebook.com/want2it.online/"><i class="fa fa-facebook fa-lg"></i></a></li>
-              <li  data-bs-toggle="tooltip" data-bs-placement="top" title="Instagram"><a class="instagram" href="https://instagram.com/want2it/"><i class="fa fa-instagram fa-lg"></i></a></li>
+              <li ><a class="twitter" href="https://twitter.com/want2it"><i class="fa fa-twitter fa-lg"></i></a></li>
+              <li><a class="telegram" href="https://t.me/want2it"><i class="fa fa-telegram fa-lg"></i></a></li>
+              <li><a class="linkedin" href="https://linkedin.com/company/want2it/"><i class="fa fa-linkedin fa-lg"></i></a></li>
+              <li><a class="facebook" href="https://facebook.com/want2it.online/"><i class="fa fa-facebook fa-lg"></i></a></li>
+              <li ><a class="instagram" href="https://instagram.com/want2it/"><i class="fa fa-instagram fa-lg"></i></a></li>
             </ul>
       <p class="my-auto mx-5 text-center">&copy; 2022 <span class="lang-49" data-label="LLC 'Want 2 IT'">ООО "Хочу Вайти"</span> <small style="opacity: 0.5">УНП192847179</small></p>
 
@@ -880,16 +875,6 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     <script src="{% static 'js/imagesloaded.min.js' %}"></script>
     <script src="{% static 'js/isotope.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-    <script type="text/javascript">
-        //========= glightbox
-        GLightbox({
-            'href': 'https://www.youtube.com/watch?v=r44RKWyfcFw&fbclid=IwAR21beSJORalzmzokxDRcGfkZA1AtRTE__l5N4r09HcGS5Y6vOluyouM9EM',
-            'type': 'video',
-            'source': 'youtube', //vimeo, youtube or local
-            'width': 900,
-            'autoplayVideos': true,
-        });
-    </script>
 </body>
 
 </html>
