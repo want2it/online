@@ -1,5 +1,100 @@
-{{ form }}
+{% extends 'price.html' %}
 
-{% for obj in object_list %}
- {{ obj }}
-{% endfor %}
+{% block content %}
+
+    <!-- Start About Us Area -->
+    <section class="about-us section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="about-left">
+                        <div class="about-tab wow fadeInUp row" data-wow-delay=".4s">
+                            <!-- Nav Tab  -->
+                                <div class="col-md-6 col-lg-6 col-12 mt-2"><b class="text-primary">Месячный - $3500 в месяц</b></div>
+                                <div class="col-md-6 col-lg-6 col-12 d-flex flex-row-reverse my-2">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item"><a class="nav-link active Стандартный" data-toggle="tab" href="#t-Стандартный"
+                                        role="tab">Стандартный</a></li>
+                                <li class="nav-item"><a class="nav-link Индивидуальный" data-toggle="tab" href="#t-Индивидуальный"
+                                        role="tab">Индивидуальный</a></li>
+                            </ul>
+                            </div>
+                            <!--/ End Nav Tab -->
+                            <div class="tab-content" id="myTabContent">
+                                <!-- Tab 1 -->
+
+                                <div class="tab-pane fade show active" id="t-Стандартный" role="tabpanel">
+                                    <div class="tab-content">
+
+      <div class="table-responsive text-center" style="white-space: nowrap;">
+        <table class="table table-hover" >
+          <thead>
+            <tr>
+              <th class="text-start">Специализация</th>
+              <th>Junior</th>
+              <th>Middle</th>
+              <th>Senior</th>
+              <th>Lead</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for obj in object_list %}
+              <tr class="{{ obj.author }} name="Стандартный">
+              <td class="text-start">{{ obj }}</td>
+              <td>от ${{ obj.junior }}</td>
+              <td>от ${{ obj.middle }}</td>
+              <td>от ${{ obj.senior }}</td>
+              <td>от ${{ obj.lead }}</td>
+              </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+                                    </div>
+                                </div>
+                                <!--/ End Tab 1 -->
+                                <div class="tab-pane fade show" id="t-Индивидуальный" role="tabpanel">
+                                    <div class="tab-content">
+
+      <div class="table-responsive text-center" style="white-space: nowrap;">
+        <table class="table table-hover" >
+          <thead>
+            <tr>
+              <th class="text-start">Специализация</th>
+              <th>Junior</th>
+              <th>Middle</th>
+              <th>Senior</th>
+              <th>Lead</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for obj in object_list %}
+              <tr class="{{ obj.author }}" id="Индивидуальный">
+              <td class="text-start">{{ obj }}</td>
+              <td>от ${{ obj.junior }}</td>
+              <td>от ${{ obj.middle }}</td>
+              <td>от ${{ obj.senior }}</td>
+              <td>от ${{ obj.lead }}</td>
+              </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+                                    </div>
+                                </div>
+                                <!--/ End Tab 1 -->
+                            <script>
+
+                            </script>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- /End About Us Area -->
+
+
+{% endblock %}

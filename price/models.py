@@ -34,15 +34,15 @@ class Category(models.Model):
 
 class Book(models.Model):
     name = models.CharField('Book name', max_length=100)
-    author = models.ForeignKey(Author, blank=True, null=True, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, blank=True, null=False, on_delete=models.CASCADE)
     author_email = models.EmailField('Author email', max_length=75, blank=True)
     imported = models.BooleanField(default=False)
     published = models.DateField('Published', blank=True, null=True)
     published_time = models.TimeField('Time published', blank=True, null=True)
-    junior = models.DecimalField(max_digits=1000, decimal_places=4, null=True, blank=True)
-    middle = models.DecimalField(max_digits=1000, decimal_places=4, null=True, blank=True)
-    senior = models.DecimalField(max_digits=1000, decimal_places=4, null=True, blank=True)
-    lead = models.DecimalField(max_digits=1000, decimal_places=4, null=True, blank=True)
+    junior = models.DecimalField(max_digits=1000, decimal_places=0, null=True, blank=True)
+    middle = models.DecimalField(max_digits=1000, decimal_places=0, null=True, blank=True)
+    senior = models.DecimalField(max_digits=1000, decimal_places=0, null=True, blank=True)
+    lead = models.DecimalField(max_digits=1000, decimal_places=0, null=True, blank=True)
     added = models.DateTimeField(blank=True, null=True)
 
     categories = models.ManyToManyField(Category, blank=True)

@@ -4,6 +4,7 @@ from django.views import generic
 from django.utils import timezone
 from django.core.files.storage import FileSystemStorage
 from .models import Post
+from price.models import Book
 from django.http import Http404
 from django.http import HttpResponse
 

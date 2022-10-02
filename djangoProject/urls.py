@@ -28,9 +28,9 @@ admin.autodiscover()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('', RedirectView.as_view(url='/admin/'), name="admin-site"),
     path('export/category/', views.CategoryExportView.as_view(), name='export-category'),
     path('', include('blog.urls')),
+    path('', include('price.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 
