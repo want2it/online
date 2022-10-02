@@ -23,6 +23,9 @@ def error_404_view(request, exception):
     # we add the path to the the 404.html file
     # here. The name of our HTML file is 404.html
     return render(request, '404.html')
+class PostListPrice(generic.ListView):
+    queryset = Post.objects.filter(status=1).order_by('-created_on')[:3]
+    template_name = 'price.html'
 
 class PostListInvite(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')[:3]
