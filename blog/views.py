@@ -16,14 +16,9 @@ class PostListHome(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')[:3]
     template_name = 'home.html'
 
-class PostListError(generic.ListView):
-    queryset = Post.objects.filter(status=1).order_by('-created_on')[:3]
-    template_name = '404.html'
-
-
-
 
 def error_404_view(request, exception):
+    queryset = Post.objects.filter(status=1).order_by('-created_on')[:3]
     # we add the path to the the 404.html file
     # here. The name of our HTML file is 404.html
     return render(request, '404.html')

@@ -15,12 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from price import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import RedirectView
 
+admin.autodiscover()
 # add a flag for
 # handling the 404 error
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
+    path('', RedirectView.as_view(url='/admin/'), name="admin-site"),
+    path('export/category/', views.CategoryExportView.as_view(), name='export-category'),
     path('', include('blog.urls')),
 ]
+urlpatterns += staticfiles_urlpatterns()
+
 handler404 = 'blog.views.error_404_view'

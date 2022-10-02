@@ -15,7 +15,6 @@ urlpatterns = [
     path('join/', views.PostListJoin.as_view(), name='join'),
     path('upload/', views.PostListUpload.as_view(), name='upload'),
     path('invite/', views.PostListInvite.as_view(), name='invite'),
-    path('404/', views.PostListError.as_view(), name='error'),
     path('', views.PostListHome.as_view(), name='home'),
     path('summernote/', include('django_summernote.urls')),
 
