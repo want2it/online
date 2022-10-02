@@ -1,2 +1,2 @@
 ﻿django-summernote==0.8.20.0
- django-import-export
+django-import-export
