@@ -4,7 +4,7 @@ from . import views
 from django.urls import path, include
 
 urlpatterns = [
-path('price/', views.BookListPrice.as_view(), name='price'),
+path('/', views.BookListPrice.as_view(), name='price'),
 ]
 
 if settings.DEBUG:

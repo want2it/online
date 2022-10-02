@@ -30,7 +30,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('export/category/', views.CategoryExportView.as_view(), name='export-category'),
     path('', include('blog.urls')),
-    path('', include('price.urls')),
+    path('price', include('price.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 

@@ -44,10 +44,6 @@ class PostListVacancy(generic.ListView):
     template_name = 'vacancy.html'
 
 
-class PostListPrice(generic.ListView):
-    queryset = Post.objects.filter(status=1).order_by('-created_on')[:3]
-    template_name = 'price.html'
-
 class PostListDocs(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')[:3]
     template_name = 'docs.html'

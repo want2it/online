@@ -10,7 +10,6 @@ urlpatterns = [
     path('blog/', views.PostList.as_view(), name='blog'),
     path('about/', views.PostListAbout.as_view(), name='about'),
     path('vacancy/', views.PostListVacancy.as_view(), name='vacancy'),
-    path('', views.PostListPrice.as_view(), name='price'),
     path('docs/', views.PostListDocs.as_view(), name='docs'),
     path('join/', views.PostListJoin.as_view(), name='join'),
     path('upload/', views.PostListUpload.as_view(), name='upload'),
